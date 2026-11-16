@@ -1,7 +1,9 @@
-
 from fastapi import FastAPI
 
+from equipo5wm.rutas.entradas import router as entradas_router
+
 app = FastAPI()
+app.include_router(entradas_router)
 
 @app.get("/")
 def read_root():
@@ -10,20 +12,3 @@ def read_root():
 @app.get("health")
 def health():
     return {"status": "ok"}
-
-
-@app.post("/entradas")
-def crear_entrada(id: int):
-    pass
-
-@app.get("/entradas/{id}")
-def get_entradas(id: int):
-    pass
-
-@app.post("/entradas/{codigo}/validar")
-def validar_entrada(codigo: int):
-    pass
-
-@app.get("/entradas/eventos/{id}/resumen")
-def resumen_entrada(id: int):
-    pass
